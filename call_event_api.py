@@ -22,7 +22,7 @@ def event_notification(source, event):
 
             x = requests.post(url, json = myobj)
 
-            print(x.text)
+            #print(x.text)
 
     #os.system('notify-send "%s" "%s"' % (event.name, str(event)))
 
