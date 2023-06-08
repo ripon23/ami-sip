@@ -2,8 +2,8 @@
 import os
 import time
 from settings import login, connection
-
 from asterisk.ami import AMIClient
+import requests
 
 def event_notification(source, event):
     
@@ -17,13 +17,19 @@ def event_notification(source, event):
             print("Caller: " , caller_id)
             print("Callee: " , callee)
             print("Uniqueid:", uniqueid)
+            url = 'https://sip-api.doctime.com.bd/api/calls/audio/validate'
+            myobj = {'caller': caller_id, 'connected': callee, 'uniqueid': uniqueid}
+
+            x = requests.post(url, json = myobj)
+
+            print(x.text)
 
     #os.system('notify-send "%s" "%s"' % (event.name, str(event)))
 
 client = AMIClient(**connection)
 future = client.login(**login)
 if future.response.is_error():
-    print(str(future.response))
+    print(" === Error === ", str(future.response))
     #raise Exception(str(future.response))
 
 client.add_event_listener(event_notification)
