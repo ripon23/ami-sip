@@ -8,3 +8,5 @@ login = {
     'username': 'amiuser',
     'secret': 'secret'
 }
+
+Headers = { "Authorization" : "Audi@Ca11#" }

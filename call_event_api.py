@@ -1,7 +1,7 @@
 #!/usr/bin/python
 import os
 import time
-from settings import login, connection
+from settings import login, connection, Headers
 from asterisk.ami import AMIClient
 import requests
 
@@ -16,11 +16,12 @@ def event_notification(source, event):
         if callee != 's':
             print("Caller: " , caller_id)
             print("Callee: " , callee)
-            print("Uniqueid:", uniqueid)
+            print("Uniqueid:", uniqueid)                        
+
             url = 'https://sip-api.doctime.com.bd/api/calls/audio/validate'
             myobj = {'caller': caller_id, 'connected': callee, 'uniqueid': uniqueid}
 
-            requests.post(url, json = myobj)
+            requests.post(url, json = myobj, headers=Headers)
 
             #print(x.text)
 
