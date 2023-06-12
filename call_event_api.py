@@ -20,7 +20,7 @@ def event_notification(source, event):
             url = 'https://sip-api.doctime.com.bd/api/calls/audio/validate'
             myobj = {'caller': caller_id, 'connected': callee, 'uniqueid': uniqueid}
 
-            x = requests.post(url, json = myobj)
+            requests.post(url, json = myobj)
 
             #print(x.text)
 
