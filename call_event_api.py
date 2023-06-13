@@ -9,7 +9,8 @@ def api_post(caller_id, callee, uniqueid, status, call_status):
     url = 'https://sip-api.doctime.com.bd/api/calls/audio/validate'
     myobj = {'caller': caller_id, 'connected': callee, 'uniqueid': uniqueid, 'status': status, 'call_status': call_status }
     requests.post(url, json = myobj, headers=Headers)
-    print(f"Call {status} - Caller ID: {caller_id}, Callee: {callee}, Uniqueid: {uniqueid}, Status: {status}, Call status: {call_status}")
+    # print(f"Call {status} - Caller ID: {caller_id}, Callee: {callee}, Uniqueid: {uniqueid}, Status: {status}, Call status: {call_status}")
+    print("Call %s - Caller ID: %s, Callee: %s, Uniqueid: %s, Status: %s, Call status: %s" % (status, caller_id, callee, uniqueid, status, call_status))
     return
 
 def event_notification(source, event):
